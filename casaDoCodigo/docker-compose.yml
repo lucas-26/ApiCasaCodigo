@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  databasePostgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./.dataPostgres:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
