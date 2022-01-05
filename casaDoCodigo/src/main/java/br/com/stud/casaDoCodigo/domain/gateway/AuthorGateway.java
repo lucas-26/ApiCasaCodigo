@@ -1,9 +1,9 @@
 package br.com.stud.casaDoCodigo.domain.gateway;
 
-import br.com.stud.casaDoCodigo.domain.model.Author;
+import br.com.stud.casaDoCodigo.domain.model.AuthorModel;
 
 public interface AuthorGateway {
     
-    public Author createAuthor(Author author);
+    public AuthorModel createAuthor(AuthorModel author);
 
 }
