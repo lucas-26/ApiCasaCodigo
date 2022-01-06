@@ -3,6 +3,7 @@ package br.com.stud.casaDoCodigo.usecases.authorUseCase.useCaseImpl;
 import java.util.Optional;
 
 import br.com.stud.casaDoCodigo.domain.gateway.AuthorGateway;
+import br.com.stud.casaDoCodigo.domain.model.AuthorModel;
 import br.com.stud.casaDoCodigo.usecases.authorUseCase.AuthorUseCase;
 import br.com.stud.casaDoCodigo.usecases.mapper.AuthorMapper;
 import br.com.stud.casaDoCodigo.usecases.model.Author;
@@ -15,7 +16,7 @@ public class AuthorUseCaseImpl implements AuthorUseCase {
 
     @Autowired
     AuthorGateway authorGateway;
-    private AuthorMapper mapper;
+    AuthorMapper mapper = new AuthorMapper();
 
     @Override
     public Optional<Author> findAutor(String id) {
@@ -25,10 +26,10 @@ public class AuthorUseCaseImpl implements AuthorUseCase {
 
     @Override
     public Author createAutor(Author autor) {
-        authorGateway.createAuthor(mapper.parseReqForModel(autor));
-        return null;
+        AuthorModel authorModel = mapper.parseReqForModel(autor);
+        authorGateway.createAuthor(authorModel);
+        return new Author(authorModel.getMomentRegister(), authorModel.getEmail(), authorModel.getNome(),
+                authorModel.getDescription());
     }
 
-   
-    
 }
