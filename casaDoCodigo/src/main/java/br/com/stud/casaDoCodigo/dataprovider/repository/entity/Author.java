@@ -33,5 +33,20 @@ public class Author {
         this.description = description;
     }
     
+    public LocalDateTime getMomentRegister() {
+        return momentRegister;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
 }

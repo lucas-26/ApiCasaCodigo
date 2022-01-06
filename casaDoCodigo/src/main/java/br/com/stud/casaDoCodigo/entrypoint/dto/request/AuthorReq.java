@@ -2,19 +2,23 @@ package br.com.stud.casaDoCodigo.entrypoint.dto.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AuthorReq {
     
+    @JsonProperty("Email")
     @NotBlank(message = "obrigatório passar um dados.")
     @Email(message = "use um email valido.")
     private String email;
+    @JsonProperty("Nome")
     @NotBlank(message = "obrigatório passar um dados.")
     @Size(min = 1, max = 150)
     private String nome;
+    @JsonProperty("Descrição")
     @NotBlank(message = "obrigatório passar um dados.")
-    @Size(min = 1, max = 150)
+    @Size(min = 1, max = 400)
     private String description;
 
     @Deprecated
