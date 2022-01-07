@@ -35,7 +35,7 @@ public class AuthorController {
         authorUseCase.createAutor(authorModel);
 
         AuthorResp response = new AuthorResp();
-        response.messageForCreateNewAuthor("Um novo autor criado no sitema");
+        response.messageForCreateNewAuthor("Um novo autor criado no sitema.");
         return ResponseEntity.ok(response);
     }
 
