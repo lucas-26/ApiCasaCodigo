@@ -16,7 +16,7 @@ public class Author {
     private Long id;
     @Column(nullable = false)
     private LocalDateTime momentRegister;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String nome;
