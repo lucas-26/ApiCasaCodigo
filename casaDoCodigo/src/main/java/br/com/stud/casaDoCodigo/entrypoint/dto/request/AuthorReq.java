@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.stud.casaDoCodigo.dataprovider.repository.entity.AuthorEntity;
+import br.com.stud.casaDoCodigo.entrypoint.annotation.ValidatorGeneric;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AuthorReq {
@@ -15,8 +17,9 @@ public class AuthorReq {
     @JsonProperty("Nome")
     @NotBlank(message = "obrigatório passar um dados.")
     @Size(min = 1, max = 150)
+    @ValidatorGeneric(target = "nome", domainCLass = AuthorEntity.class)
     private String nome;
-    @JsonProperty("Descrição")
+    @JsonProperty("Descricao")
     @NotBlank(message = "obrigatório passar um dados.")
     @Size(min = 1, max = 400)
     private String description;

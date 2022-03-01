@@ -1,5 +1,7 @@
 package br.com.stud.casaDoCodigo.entrypoint.controller;
 
+import br.com.stud.casaDoCodigo.entrypoint.dto.response.FindAuthorResp;
+import br.com.stud.casaDoCodigo.entrypoint.exception.exceptionsObject.AuthorNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import br.com.stud.casaDoCodigo.entrypoint.dto.request.AuthorReq;
 import br.com.stud.casaDoCodigo.entrypoint.dto.response.AuthorResp;
 import br.com.stud.casaDoCodigo.usecases.authorUseCase.AuthorUseCase;
+
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @SpringBootTest
 public class AuthorControllerTests {
@@ -31,7 +36,17 @@ public class AuthorControllerTests {
     }
 
     @Test
-    void criar_Author() {
+    void not_found_Author_exception() {
+        AuthorController controller = new AuthorController(authorUseCase);
+        controller.createAuthor(request);
+
+        Exception ex = Assertions.assertThrows(NoSuchElementException.class, () -> {
+            controller.findAuthor("1");
+        });
+    }
+
+    @Test
+    void create_Author() {
 
         AuthorController controller = new AuthorController(authorUseCase);
         ResponseEntity<AuthorResp> authorReturn = controller.createAuthor(request);

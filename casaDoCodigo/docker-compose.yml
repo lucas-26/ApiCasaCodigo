@@ -11,4 +11,4 @@ services:
     volumes:
       - ./.dataPostgres:/var/lib/postgresql/data/pgdata
     ports:
-      - 5432:5432
+      - "5432:5432"

@@ -1,18 +1,15 @@
 package br.com.stud.casaDoCodigo.dataprovider.repository.entity;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 @Entity
-public class Author {
+@Table(name = "Author")
+public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     @Column(nullable = false)
     private LocalDateTime momentRegister;
@@ -24,15 +21,28 @@ public class Author {
     private String description;
 
     @Deprecated
-    public Author(){}
+    public AuthorEntity() {
+    }
 
-    public Author(LocalDateTime momentRegister, String email, String nome, String description) {
+    public AuthorEntity(Long id, LocalDateTime momentRegister, String email, String nome, String description) {
+        this.id = id;
         this.momentRegister = momentRegister;
         this.email = email;
         this.nome = nome;
         this.description = description;
     }
-    
+
+    public AuthorEntity(LocalDateTime momentRegister, String email, String nome, String description) {
+        this.momentRegister = momentRegister;
+        this.email = email;
+        this.nome = nome;
+        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public LocalDateTime getMomentRegister() {
         return momentRegister;
     }

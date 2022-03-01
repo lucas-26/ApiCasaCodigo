@@ -1,13 +1,15 @@
 package br.com.stud.casaDoCodigo.usecases.authorUseCase;
 
+import br.com.stud.casaDoCodigo.domain.model.AuthorModel;
+
 import java.util.Optional;
 
-import br.com.stud.casaDoCodigo.usecases.model.Author;
-
 public interface AuthorUseCase {
-    
-    Optional<Author> findAutor(String id);
 
-    Author createAutor (Author autor);
+    Optional<AuthorModel> findById(Integer id);
+
+    Optional<AuthorModel> findAuthor(String id);
+
+    AuthorModel createAuthor(AuthorModel author);
 
 }
