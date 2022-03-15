@@ -7,10 +7,12 @@ import br.com.stud.casaDoCodigo.usecases.stateUseCase.StateUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -21,7 +23,7 @@ public class StateController {
     private StateUseCase useCase;
 
     @PostMapping
-    public ResponseEntity<StateResp> createState(StateReq req) {
+    public ResponseEntity<StateResp> createState(@RequestBody @Valid StateReq req) {
 
         StateModel state = useCase.createState(req);
         StateResp resp = new StateResp(state.getNome(), state.getPais());

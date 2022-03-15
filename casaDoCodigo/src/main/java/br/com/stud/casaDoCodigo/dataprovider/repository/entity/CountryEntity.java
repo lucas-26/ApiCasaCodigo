@@ -19,6 +19,11 @@ public class CountryEntity {
         this.nome = nome;
     }
 
+    public CountryEntity(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,5 +1,6 @@
-version: '3.1'
+version: '3.3'
 services:
+
   databasePostgres:
     image: postgres
     restart: always
@@ -8,7 +9,30 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=password
       - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - ecoCasa
     volumes:
       - ./.dataPostgres:/var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
+
+  casadocodigo:
+    build:
+      context: target
+      dockerfile: ../Dockerfile
+    networks:
+      - ecoCasa
+    ports:
+      - "8077:8077"
+    depends_on:
+      - databasePostgres
+
+networks:
+  ecoCasa:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24

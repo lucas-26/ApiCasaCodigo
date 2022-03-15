@@ -9,6 +9,11 @@ public class CountryResp {
         this.nome = nome;
     }
 
+    public CountryResp(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public Long getId() {
         return id;
     }

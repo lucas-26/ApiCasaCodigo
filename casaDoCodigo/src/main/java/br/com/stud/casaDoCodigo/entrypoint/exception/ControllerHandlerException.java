@@ -1,9 +1,6 @@
 package br.com.stud.casaDoCodigo.entrypoint.exception;
 
-import br.com.stud.casaDoCodigo.entrypoint.exception.exceptionsObject.AuthorNotFoundException;
-import br.com.stud.casaDoCodigo.entrypoint.exception.exceptionsObject.CategoryAlreadyExistsException;
-import br.com.stud.casaDoCodigo.entrypoint.exception.exceptionsObject.EmailAlreadyExistsException;
-import br.com.stud.casaDoCodigo.entrypoint.exception.exceptionsObject.ErrorMessage;
+import br.com.stud.casaDoCodigo.entrypoint.exception.exceptionsObject.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -60,6 +57,34 @@ public class ControllerHandlerException {
     @ExceptionHandler(value = {IllegalArgumentException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorMessage illegalArgumentException(IllegalArgumentException ex) {
+
+        int status = HttpStatus.BAD_REQUEST.value();
+        Date date = new Date();
+
+        return new ErrorMessage(
+                status,
+                date,
+                ex.getMessage(),
+                "Please verify if what you pass in request its ok.");
+    }
+
+    @ExceptionHandler(value = DocumentIllegalFormatException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ErrorMessage documentArgumentException(DocumentIllegalFormatException ex) {
+
+        int status = HttpStatus.BAD_REQUEST.value();
+        Date date = new Date();
+
+        return new ErrorMessage(
+                status,
+                date,
+                ex.getMessage(),
+                "Please verify if what you pass in request its ok.");
+    }
+
+    @ExceptionHandler(value = StateBelongsToTheCountryException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ErrorMessage stateBelongsToTheCountryException(DocumentIllegalFormatException ex) {
 
         int status = HttpStatus.BAD_REQUEST.value();
         Date date = new Date();

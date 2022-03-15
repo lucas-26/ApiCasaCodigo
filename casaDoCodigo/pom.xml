@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.stud</groupId>
 	<artifactId>casaDoCodigo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>casaDoCodigo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
